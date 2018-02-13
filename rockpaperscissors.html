@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+
+ 	// Your JavaScript goes here!\
+    function computerPlay() {
+
+        let x = Math.floor((Math.random()*3)+1)
+        let choice = ""
+
+        if(x == 1) {
+          choice = "rock"
+        }
+        if(x == 2) {
+          choice = "paper"
+        }
+        if(x == 3) {
+          choice = "scissor"
+        }
+        return choice
+    }
+
+    function playRound(playerSelection, computerSelection) {
+
+      let winner
+
+      // Inital check for if the player and the computer chose the same choice
+      // This is probably, so far as I know the most effective way of handling
+      // a draw. If a draw is the first thing to happen, all other code doesn't
+      // need to be checked and it goes straight to the end of the function
+
+      if(playerSelection == computerSelection) {
+        console.log("IT'S A DRAW!")
+      }
+
+      // Win-Lose conditions
+      // Personally, I am highly perturbed by the amount of if-statements
+      // in this else-block. DRY concepts tell me that there is a much simpler
+      // way of going about this, but I fail to think of anything.
+      // Is this because the rules of a game as simple as RPS requires very
+      // specific instructions for all possible actions?
+
+      else {
+          if(playerSelection == "rock") {
+
+            if(computerSelection == "paper") {
+              console.log("You Lose! Paper beats Rocks!")
+              winner = 0
+            }
+            else {
+              console.log("You Win! Rock beats Scissors!")
+              winner = 1
+            }
+            // ---------------------
+            // ---END IF-STATEMENT--
+            // ---------------------
+            }
+
+          if(playerSelection == "scissor") {
+
+            if(computerSelection == "rock") {
+              console.log("You Lose! Rock beats Scissors!")
+              winner = 0
+            }
+
+            else {
+              console.log("You Win! Paper beats Scissors!")
+              winner = 1
+            }
+            // ---------------------
+            // --END IF-STATEMENT--
+            // ---------------------
+          }
+
+          if(playerSelection == "paper") {
+
+            if(computerSelection == "scissor") {
+              console.log("You Lose! Scissors beats Paper!")
+              winner = 0
+            }
+
+            else {
+              console.log("You Win! Rock beats Scissors!")
+              winner = 1
+            }
+            // ---------------------
+            // --END IF-STATEMENT--
+            // ---------------------
+          }
+        }
+
+        // End of function
+        // Return result
+        return winner
+    }
+
+    function game() {
+
+      for(i=0; i<5;i++) {
+
+        // Initialize variables
+        // Get player and computer actions
+        const playerSelection = 'rock'
+        const computerSelection = computerPlay()
+
+        playRound(playerSelection, computerSelection)
+
+        // ---------------------
+        //  -- END FOR-LOOP --
+        // ---------------------
+        }
+    }
+
+    // Begin game
+    game()
+
+  </script>
+</body>
+</html>
